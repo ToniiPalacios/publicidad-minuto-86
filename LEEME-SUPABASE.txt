@@ -1,0 +1,29 @@
+PUBLICIDAD MINUTO 86 - V3.2 SUPABASE
+
+Esta versión guarda:
+- Publicidades en la tabla public.publicidades de Supabase.
+- Logos en el bucket público logos-publicidad de Supabase Storage.
+
+VARIABLES DE ENTORNO OBLIGATORIAS EN RENDER:
+
+SUPABASE_URL
+Valor: la URL del proyecto Supabase, por ejemplo:
+https://xxxxxxxxxxxxxxxxxxxx.supabase.co
+
+SUPABASE_SECRET_KEY
+Valor: la clave secreta del proyecto Supabase (Secret key).
+IMPORTANTE: colocarla solamente en Render. No guardarla en GitHub ni enviarla por chat.
+
+SUPABASE_BUCKET
+Valor:
+logos-publicidad
+
+PASOS DE DESPLIEGUE:
+1. Instalar dependencias: npm install
+2. Subir esta carpeta a GitHub con Git.
+3. Configurar las tres variables en Render.
+4. Hacer Deploy latest commit.
+5. Probar /admin.html y /overlay.html.
+
+La tabla esperada debe tener estas columnas:
+id, nombre, rubro, direccion, telefono, descripcion, logo, tiempo, visible, creado.
