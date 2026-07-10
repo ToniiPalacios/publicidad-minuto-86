@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Publicidad Minuto 86</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="panel">
+    <header class="top">
+      <div>
+        <h1>Publicidad Minuto 86</h1>
+        <p>Panel de control para banners de OBS</p>
+      </div>
+      <div class="estado" id="estadoConexion">Conectando...</div>
+    </header>
+
+    <section class="controles">
+      <button onclick="mostrarBanner()">Mostrar</button>
+      <button onclick="ocultarBanner()">Ocultar</button>
+      <button onclick="anteriorPublicidad()">Anterior</button>
+      <button onclick="siguientePublicidad()">Siguiente</button>
+      <button onclick="pausarRotacion()">Pausar</button>
+      <button onclick="reanudarRotacion()">Reanudar</button>
+    </section>
+
+    <section class="formulario">
+      <h2 id="formTitulo">Agregar publicidad</h2>
+      <input type="hidden" id="editId">
+      <label>Nombre del comercio</label>
+      <input id="nombre" placeholder="Ej: Hogar Resuelve">
+
+      <label>Rubro</label>
+      <input id="rubro" placeholder="Ej: Ferretería • Electricidad • Refrigeración">
+
+      <div class="fila">
+        <div>
+          <label>Teléfono</label>
+          <input id="telefono" placeholder="Ej: 3704 123456">
+        </div>
+        <div>
+          <label>Dirección</label>
+          <input id="direccion" placeholder="Ej: Av. San Martín 123">
+        </div>
+      </div>
+      <label>Descripción / promoción</label>
+      <textarea id="descripcion" placeholder="Ej: Todo para el hogar, ferretería y electricidad"></textarea>
+      <div class="fila">
+        <div>
+          <label>Duración en segundos</label>
+          <input id="duracion" type="number" value="10" min="1">
+        </div>
+        <div>
+          <label>Estado</label>
+          <select id="activa">
+            <option value="true">Activa</option>
+            <option value="false">Inactiva</option>
+          </select>
+        </div>
+      </div>
+      <label>Logo del comercio</label>
+      <input id="logo" type="file" accept="image/*">
+      <div id="previewLogo" class="preview">SIN LOGO</div>
+      <div class="acciones-form">
+        <button class="principal" onclick="guardarPublicidad()">Guardar publicidad</button>
+        <button class="secundario" onclick="limpiarFormulario()">Cancelar edición</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Publicidades cargadas</h2>
+      <p class="ayuda">Solo las publicidades activas aparecen en el overlay. Las inactivas quedan guardadas para más adelante.</p>
+      <div id="lista"></div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

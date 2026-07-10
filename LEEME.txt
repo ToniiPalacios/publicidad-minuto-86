@@ -1,0 +1,30 @@
+PUBLICIDAD MINUTO 86 - v3.1 ONLINE CORRECTO
+
+IMPORTANTE PARA GITHUB:
+Subir TODO el contenido de esta carpeta, respetando la estructura.
+Debe quedar así en GitHub:
+
+publicidad-minuto-86/
+  public/
+    admin.html
+    admin.css
+    admin.js
+    overlay.html
+    overlay.js
+    style.css
+    uploads/
+      .gitkeep
+  server.js
+  package.json
+  package-lock.json
+  publicidades.json
+
+NO subir node_modules.
+
+RENDER:
+Build Command: npm install
+Start Command: npm start
+
+LINKS:
+/admin.html   panel de administración
+/overlay.html overlay para OBS
