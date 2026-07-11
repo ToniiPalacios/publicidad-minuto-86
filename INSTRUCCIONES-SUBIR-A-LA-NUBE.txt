@@ -1,0 +1,13 @@
+PUBLICIDAD MINUTO 86 - VERSION NUBE CON NOMBRE CORREGIDO
+
+Esta carpeta ya está preparada para GitHub + Render + Supabase.
+
+CORRECCION PRINCIPAL:
+- El nombre del comercio se reconoce desde nombre, nombre_comercio, comercio, titulo o title.
+- El overlay siempre muestra el nombre centrado.
+- Se mantiene Supabase para datos y logos.
+
+IMPORTANTE:
+- No subas el archivo .env a GitHub.
+- Las variables SUPABASE_URL, SUPABASE_SECRET_KEY y SUPABASE_BUCKET siguen configuradas en Render.
+- Para actualizar la nube, reemplaza en tu carpeta conectada a GitHub todos los archivos por los de esta carpeta, excepto .git y .env.

@@ -4,6 +4,12 @@ let indice = 0;
 let timer = null;
 let pausado = false;
 
+function obtenerNombre(pub = {}) {
+  const valor = pub.nombre ?? pub.nombre_comercio ?? pub.comercio ?? pub.titulo ?? pub.title;
+  const nombre = valor === null || valor === undefined ? '' : String(valor).trim();
+  return nombre || 'SIN NOMBRE';
+}
+
 function publicidadesActivas(lista) {
   return lista.filter(pub => pub.activa !== false);
 }
@@ -37,7 +43,7 @@ function mostrarActual() {
   void banner.offsetWidth;
   banner.classList.add('cambio');
 
-  document.getElementById('titulo').textContent = pub.nombre || 'Sin nombre';
+  document.getElementById('titulo').textContent = obtenerNombre(pub);
   document.getElementById('rubro').textContent = pub.rubro || 'PUBLICIDAD';
   document.getElementById('descripcion').textContent = pub.descripcion || '';
   document.getElementById('telefono').textContent = pub.telefono ? 'TEL: ' + pub.telefono : '';

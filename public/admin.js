@@ -2,6 +2,12 @@ const socket = io();
 let publicidadesActuales = [];
 const logoInput = document.getElementById('logo');
 
+function obtenerNombre(pub = {}) {
+  const valor = pub.nombre ?? pub.nombre_comercio ?? pub.comercio ?? pub.titulo ?? pub.title;
+  const nombre = valor === null || valor === undefined ? '' : String(valor).trim();
+  return nombre || 'Sin nombre';
+}
+
 socket.on('connect', () => {
   document.getElementById('estadoConexion').textContent = 'Conectado';
 });
@@ -42,7 +48,7 @@ function dibujarLista() {
     div.innerHTML = `
       <div class="item-logo">${pub.logo ? `<img src="${pub.logo}?v=${Date.now()}" alt="logo">` : 'LOGO'}</div>
       <div class="item-info">
-        <strong>${pub.nombre}</strong>
+        <strong>${obtenerNombre(pub)}</strong>
         <span class="badge ${activa ? 'ok' : 'off'}">${activa ? 'ACTIVA' : 'INACTIVA'}</span><br>
         <span class="muted">Rubro: ${pub.rubro || '-'}</span><br>
         <span class="muted">Tel: ${pub.telefono || '-'}</span><br>
@@ -94,7 +100,7 @@ function editarPublicidad(id) {
 
   document.getElementById('formTitulo').textContent = 'Editar publicidad';
   document.getElementById('editId').value = pub.id;
-  document.getElementById('nombre').value = pub.nombre || '';
+  document.getElementById('nombre').value = obtenerNombre(pub) === 'Sin nombre' ? '' : obtenerNombre(pub);
   document.getElementById('rubro').value = pub.rubro || '';
   document.getElementById('telefono').value = pub.telefono || '';
   document.getElementById('direccion').value = pub.direccion || '';

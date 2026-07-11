@@ -40,7 +40,7 @@ body{
 
 .fila-superior{
   display:grid;
-  grid-template-columns:138px 285px 1fr 365px;
+  grid-template-columns:138px minmax(210px,285px) minmax(320px,1fr) minmax(290px,365px);
   column-gap:20px;
   align-items:center;
 }
@@ -95,7 +95,8 @@ body{
   font-weight:900;
   letter-spacing:.6px;
   text-transform:uppercase;
-  text-shadow:2px 2px 0 rgba(0,0,0,.45);
+  color:#fff;
+  text-shadow:2px 2px 0 rgba(0,0,0,.45), 0 0 10px rgba(255,255,255,.12);
   white-space:normal;
   overflow-wrap:anywhere;
   display:-webkit-box;
