@@ -292,35 +292,34 @@ body{
   }
 }
 
-/* Nombre móvil independiente: no depende de la grilla principal. */
+/* Nombre móvil dibujado como gráfico: evita fallos de renderizado de texto en Android. */
 .titulo-movil{
   display:none;
 }
 
 @media (max-width:1100px){
   .titulo-movil{
-    display:block;
+    display:flex;
     width:100%;
+    height:92px;
     box-sizing:border-box;
     margin:0 0 9px;
     padding:0 4px 8px;
     border-bottom:1px solid rgba(255,255,255,.14);
-    color:#fff;
-    -webkit-text-fill-color:#fff;
-    font-size:clamp(22px,7vw,36px);
-    line-height:1.08;
-    font-weight:900;
-    letter-spacing:.2px;
-    text-align:center;
-    text-transform:uppercase;
-    white-space:normal;
-    overflow-wrap:anywhere;
-    visibility:visible;
-    opacity:1;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
   }
 
+  #tituloMovilCanvas{
+    display:block;
+    max-width:100%;
+    height:92px;
+  }
+
+  /* En móvil se usa el canvas; el título HTML queda solo para PC/OBS. */
   .bloque-nombre{
-    display:none !important;
+    display:none;
   }
 
   .fila-superior{
