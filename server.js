@@ -31,7 +31,22 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY, {
 });
 
 app.use(express.json());
-app.use(express.static(PUBLIC_DIR));
+
+// Evita que celulares y navegadores internos conserven versiones anteriores
+// del overlay después de una actualización en Render.
+app.use((req, res, next) => {
+  if (req.path === '/overlay.html' || req.path === '/admin.html' ||
+      req.path.endsWith('.js') || req.path.endsWith('.css') ||
+      req.path.startsWith('/api/')) {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    res.set('Surrogate-Control', 'no-store');
+  }
+  next();
+});
+
+app.use(express.static(PUBLIC_DIR, { etag: false, lastModified: false }));
 
 const upload = multer({
   storage: multer.memoryStorage(),

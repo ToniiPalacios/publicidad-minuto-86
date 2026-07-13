@@ -15,13 +15,29 @@ function publicidadesActivas(lista) {
 }
 
 async function cargarPublicidades() {
-  const res = await fetch('/api/publicidades');
-  const todas = await res.json();
-  publicidades = publicidadesActivas(todas);
+  try {
+    const res = await fetch('/api/publicidades', { cache: 'no-store' });
+    if (!res.ok) throw new Error('No se pudieron cargar las publicidades');
+    const todas = await res.json();
+    publicidades = publicidadesActivas(Array.isArray(todas) ? todas : []);
   if (!publicidades.length) return mostrarVacio();
   if (indice >= publicidades.length) indice = 0;
-  mostrarActual();
-  iniciarRotacion();
+    mostrarActual();
+    iniciarRotacion();
+  } catch (error) {
+    console.error(error);
+    mostrarError();
+  }
+}
+
+function mostrarError() {
+  if (timer) clearTimeout(timer);
+  document.getElementById('titulo').textContent = 'PUBLICIDAD MINUTO 86';
+  document.getElementById('rubro').textContent = 'SIN CONEXIÓN';
+  document.getElementById('descripcion').textContent = 'No se pudieron actualizar las publicidades';
+  document.getElementById('telefono').textContent = '';
+  document.getElementById('direccion').textContent = '';
+  document.getElementById('logoBox').textContent = 'LOGO';
 }
 
 function mostrarVacio() {
@@ -75,7 +91,7 @@ function anterior() {
 }
 
 socket.on('publicidadesActualizadas', pubs => {
-  publicidades = publicidadesActivas(pubs);
+  publicidades = publicidadesActivas(Array.isArray(pubs) ? pubs : []);
   if (!publicidades.length) return mostrarVacio();
   if (indice >= publicidades.length) indice = 0;
   mostrarActual();
