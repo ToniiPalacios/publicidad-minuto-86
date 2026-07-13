@@ -329,3 +329,44 @@ body{
       "contacto contacto";
   }
 }
+
+
+/* v3.8: detección real de teléfono.
+   No modifica PC/OBS. Evita depender del ancho de viewport de Chrome Android. */
+.titulo-movil-forzado{
+  display:none;
+}
+
+html.dispositivo-movil .titulo-movil,
+html.dispositivo-movil #tituloMovilCanvas{
+  display:none !important;
+}
+
+html.dispositivo-movil .titulo-movil-forzado{
+  display:block !important;
+  box-sizing:border-box;
+  width:100%;
+  margin:0 0 10px;
+  padding:4px 10px 10px;
+  border-bottom:1px solid rgba(255,255,255,.18);
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  font-family:Arial,sans-serif;
+  font-size:clamp(24px,7vw,38px);
+  line-height:1.08;
+  font-weight:900;
+  letter-spacing:.3px;
+  text-align:center;
+  text-transform:uppercase;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  visibility:visible !important;
+  opacity:1 !important;
+  text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+/* El título de PC permanece intacto. Solo se oculta en un teléfono real,
+   porque allí se usa el título independiente de arriba. */
+html.dispositivo-movil .bloque-nombre{
+  display:none !important;
+}
