@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Overlay Publicidad Minuto 86</title>
-  <link rel="stylesheet" href="style.css?v=3.4-title-mobile">
+  <link rel="stylesheet" href="style.css?v=3.5-mobile-title-separated">
 </head>
 <body>
   <div id="banner" class="banner">
+    <!-- En celular, el nombre se muestra en una fila propia fuera de la grilla. -->
+    <div id="tituloMovil" class="titulo-movil" aria-hidden="true">PUBLICIDAD MINUTO 86</div>
+
     <div class="fila-superior">
       <div id="logoBox" class="logo-box">LOGO</div>
 
@@ -32,6 +35,6 @@
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="overlay.js?v=3.4-title-mobile"></script>
+  <script src="overlay.js?v=3.5-mobile-title-separated"></script>
 </body>
 </html>

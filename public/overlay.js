@@ -10,6 +10,14 @@ function obtenerNombre(pub = {}) {
   return nombre || 'SIN NOMBRE';
 }
 
+function mostrarNombre(nombre) {
+  const texto = nombre || 'SIN NOMBRE';
+  const titulo = document.getElementById('titulo');
+  const tituloMovil = document.getElementById('tituloMovil');
+  if (titulo) titulo.textContent = texto;
+  if (tituloMovil) tituloMovil.textContent = texto;
+}
+
 function publicidadesActivas(lista) {
   return lista.filter(pub => pub.activa !== false);
 }
@@ -32,7 +40,7 @@ async function cargarPublicidades() {
 
 function mostrarError() {
   if (timer) clearTimeout(timer);
-  document.getElementById('titulo').textContent = 'PUBLICIDAD MINUTO 86';
+  mostrarNombre('PUBLICIDAD MINUTO 86');
   document.getElementById('rubro').textContent = 'SIN CONEXIÓN';
   document.getElementById('descripcion').textContent = 'No se pudieron actualizar las publicidades';
   document.getElementById('telefono').textContent = '';
@@ -42,7 +50,7 @@ function mostrarError() {
 
 function mostrarVacio() {
   if (timer) clearTimeout(timer);
-  document.getElementById('titulo').textContent = 'PUBLICIDAD MINUTO 86';
+  mostrarNombre('PUBLICIDAD MINUTO 86');
   document.getElementById('rubro').textContent = 'ESPACIO PUBLICITARIO';
   document.getElementById('descripcion').textContent = 'No hay publicidades activas';
   document.getElementById('telefono').textContent = '';
@@ -59,7 +67,7 @@ function mostrarActual() {
   void banner.offsetWidth;
   banner.classList.add('cambio');
 
-  document.getElementById('titulo').textContent = obtenerNombre(pub);
+  mostrarNombre(obtenerNombre(pub));
   document.getElementById('rubro').textContent = pub.rubro || 'PUBLICIDAD';
   document.getElementById('descripcion').textContent = pub.descripcion || '';
   document.getElementById('telefono').textContent = pub.telefono ? 'TEL: ' + pub.telefono : '';
