@@ -1,372 +1,107 @@
-body{
-  margin:0;
-  background:transparent;
-  font-family:Arial, sans-serif;
-  overflow:hidden;
+:root{
+  --rojo:#d4141e; --rojo-oscuro:#8f0d16; --naranja:#f28c18;
+  --azul:#1474c4; --verde:#15934a; --tinta:#101217;
+  --gris:#343a42; --blanco:#fff;
 }
+*{box-sizing:border-box}
+html,body{width:100%;height:100%}
+body{margin:0;background:transparent;color:var(--tinta);font-family:Arial,Helvetica,sans-serif;overflow:hidden}
 
 .banner{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:34px;
-  width:calc(100vw - 110px);
-  max-width:1760px;
-  min-width:900px;
-  min-height:170px;
-  background:linear-gradient(90deg,#0b0b0b,#242424 55%,#151515);
-  border-top:6px solid #c40000;
-  border-radius:18px;
-  color:#fff;
-  box-shadow:0 0 24px rgba(0,0,0,.82);
-  box-sizing:border-box;
-  padding:17px 22px 15px;
-  transition:opacity .35s ease, transform .35s ease;
+  position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
+  width:calc(100vw - 96px);max-width:1824px;min-width:940px;
+  min-height:204px;background:rgba(255,255,255,.995);
+  border:2px solid rgba(17,19,24,.24);border-radius:22px;overflow:hidden;
+  box-shadow:0 18px 46px rgba(0,0,0,.42),0 5px 14px rgba(0,0,0,.22),inset 0 1px 0 #fff;
+  transition:opacity .32s ease,transform .36s cubic-bezier(.2,.8,.2,1),filter .32s ease;
 }
+.linea-superior{display:grid;grid-template-columns:56% 18% 15% 11%;height:9px;width:100%}
+.linea-superior span{display:block}.linea-roja{background:var(--rojo)}.linea-naranja{background:var(--naranja)}.linea-azul{background:var(--azul)}.linea-verde{background:var(--verde)}
 
-.banner.oculto{
-  opacity:0;
-  transform:translateX(-50%) translateY(210px);
-}
-
-.banner.cambio{
-  animation:entrada .35s ease;
-}
-
-@keyframes entrada{
-  0%{opacity:.25; transform:translateX(calc(-50% + 18px));}
-  100%{opacity:1; transform:translateX(-50%);}
-}
-
-.fila-superior{
-  display:grid;
-  grid-template-columns:138px minmax(210px,285px) minmax(320px,1fr) minmax(290px,365px);
-  column-gap:20px;
-  align-items:center;
-}
-
+.contenido-banner{display:grid;grid-template-columns:178px minmax(0,1fr);gap:22px;align-items:stretch;padding:14px 22px 15px}
 .logo-box{
-  width:124px;
-  height:98px;
-  background:#fff;
-  color:#111;
-  border-radius:13px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  overflow:hidden;
-  font-size:17px;
+  position:relative;width:178px;min-height:164px;padding:12px;background:linear-gradient(145deg,#fff,#f7f8fa);
+  color:#3e454c;border:3px solid #fff;border-radius:18px;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;font-size:17px;font-weight:900;text-align:center;
+  box-shadow:0 0 0 3px var(--rojo),0 0 0 7px rgba(212,20,30,.10),0 8px 20px rgba(0,0,0,.18),inset 0 0 0 1px #dfe3e7;
 }
+.logo-box::before{content:"";position:absolute;left:0;top:0;right:0;height:8px;background:linear-gradient(90deg,var(--rojo) 0 62%,var(--naranja) 62% 100%)}
+.logo-box::after{content:"ANUNCIANTE";position:absolute;right:9px;bottom:7px;padding:2px 6px;border-radius:999px;background:rgba(17,19,24,.78);color:#fff;font-size:8px;line-height:11px;font-weight:900;letter-spacing:.9px}
+.logo-box img{display:block;max-width:152px;max-height:139px;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(0,0,0,.14))}
 
-.logo-box img{
-  max-width:113px;
-  max-height:88px;
-  object-fit:contain;
-}
-
-.bloque-rubro{
-  min-width:0;
-  border-right:2px solid rgba(255,255,255,.14);
-  padding-right:16px;
-}
-
+.contenido-central{min-width:0;display:grid;grid-template-rows:auto auto 1fr;align-content:center;gap:5px}
+.encabezado-comercio{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}
+.bloque-identidad{min-width:0}
 .rubro{
-  font-size:22px;
-  line-height:27px;
-  font-weight:900;
-  text-transform:uppercase;
-  color:#f1f1f1;
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+  display:inline-flex;max-width:100%;padding:5px 14px 4px;border-radius:999px;
+  background:linear-gradient(135deg,var(--rojo),var(--rojo-oscuro));border:1px solid rgba(112,0,8,.55);color:#fff;
+  font-size:18px;line-height:22px;font-weight:1000;letter-spacing:.65px;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  box-shadow:0 4px 10px rgba(190,16,25,.20),inset 0 1px 0 rgba(255,255,255,.22)
 }
-
-.bloque-nombre{
-  min-width:0;
-  text-align:center;
-  padding:0 14px;
-}
-
 .titulo{
-  font-size:42px;
-  line-height:48px;
-  font-weight:900;
-  letter-spacing:.6px;
-  text-transform:uppercase;
-  color:#fff;
-  text-shadow:2px 2px 0 rgba(0,0,0,.45), 0 0 10px rgba(255,255,255,.12);
-  white-space:normal;
-  overflow-wrap:anywhere;
-  display:block;
-  max-height:96px;
-  overflow:hidden;
-  visibility:visible;
-  opacity:1;
+  margin-top:3px;color:#0d0f13;font-size:58px;line-height:60px;font-weight:1000;
+  letter-spacing:-1.45px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  -webkit-text-stroke:.3px rgba(0,0,0,.28);text-shadow:0 2px 0 rgba(255,255,255,.95),0 3px 7px rgba(0,0,0,.10)
 }
-
-.bloque-contacto{
-  min-width:0;
-  border-left:2px solid rgba(255,255,255,.14);
-  padding-left:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:6px;
+.titulo.nombre-medio{font-size:50px;line-height:54px}.titulo.nombre-largo{font-size:42px;line-height:47px;letter-spacing:-.7px}
+.marca-programa{
+  display:flex;align-items:center;gap:9px;margin-top:3px;padding:10px 15px;border-radius:11px;
+  background:linear-gradient(135deg,#e21a25,var(--rojo-oscuro));color:#fff;
+  border:1px solid rgba(110,0,8,.62);font-size:18px;font-weight:1000;letter-spacing:.6px;white-space:nowrap;
+  box-shadow:0 6px 16px rgba(201,20,29,.30),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.12)
 }
-
-.dato{
-  font-size:21px;
-  line-height:25px;
-  font-weight:900;
-  color:#fff;
-  white-space:normal;
-  overflow-wrap:anywhere;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-
-.marca{
-  align-self:flex-start;
-  background:#c40000;
-  padding:7px 14px;
-  border-radius:10px;
-  font-size:17px;
-  font-weight:900;
-  white-space:nowrap;
-  margin-top:2px;
-}
-
-.fila-descripcion{
-  margin-top:12px;
-  padding-top:10px;
-  border-top:2px solid rgba(255,255,255,.14);
-}
-
+.marca-punto{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.20),0 0 10px rgba(255,255,255,.7)}
 .descripcion{
-  font-size:23px;
-  line-height:29px;
-  font-weight:800;
-  color:#f4f4f4;
-  text-align:center;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  overflow-wrap:anywhere;
+  min-width:0;color:#30363d;font-size:27px;line-height:31px;font-weight:900;
+  padding:1px 0 3px;border-bottom:1px solid #e2e6ea;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
 }
-
-/* Vista móvil: evita que el bloque central (nombre del comercio) quede fuera de pantalla. */
-@media (max-width: 1100px){
-  body{
-    min-height:100vh;
-  }
-
-  .banner{
-    left:10px;
-    right:10px;
-    bottom:max(12px, env(safe-area-inset-bottom));
-    width:auto;
-    max-width:none;
-    min-width:0;
-    transform:none;
-    padding:12px 14px 11px;
-    border-radius:14px;
-    min-height:0;
-  }
-
-  .banner.oculto{
-    transform:translateY(210px);
-  }
-
-  @keyframes entrada{
-    0%{opacity:.25; transform:translateX(12px);}
-    100%{opacity:1; transform:none;}
-  }
-
-  .fila-superior{
-    grid-template-columns:82px minmax(0,1fr);
-    grid-template-areas:
-      "logo nombre"
-      "rubro rubro"
-      "contacto contacto";
-    gap:8px 11px;
-    align-items:center;
-  }
-
-  .logo-box{
-    grid-area:logo;
-    width:76px;
-    height:62px;
-    border-radius:9px;
-    font-size:11px;
-  }
-
-  .logo-box img{
-    max-width:70px;
-    max-height:56px;
-  }
-
-  .bloque-nombre{
-    grid-area:nombre;
-    padding:0;
-    text-align:center;
-  }
-
-  .titulo{
-    display:block !important;
-    font-size:clamp(20px,7vw,34px);
-    line-height:1.05;
-    letter-spacing:.2px;
-    max-height:none;
-    min-height:1.05em;
-    overflow:visible;
-    color:#fff !important;
-    visibility:visible !important;
-    opacity:1 !important;
-    -webkit-text-fill-color:#fff;
-  }
-
-  .bloque-rubro{
-    grid-area:rubro;
-    border-right:0;
-    border-top:1px solid rgba(255,255,255,.14);
-    padding:7px 0 0;
-    text-align:center;
-  }
-
-  .rubro{
-    font-size:14px;
-    line-height:18px;
-    -webkit-line-clamp:2;
-  }
-
-  .bloque-contacto{
-    grid-area:contacto;
-    border-left:0;
-    padding:0;
-    display:grid;
-    grid-template-columns:1fr 1fr auto;
-    gap:6px;
-    align-items:center;
-  }
-
-  .dato{
-    font-size:12px;
-    line-height:15px;
-    text-align:center;
-    -webkit-line-clamp:2;
-  }
-
-  .marca{
-    align-self:center;
-    padding:5px 8px;
-    border-radius:7px;
-    font-size:10px;
-    margin:0;
-  }
-
-  .fila-descripcion{
-    margin-top:8px;
-    padding-top:7px;
-  }
-
-  .descripcion{
-    font-size:14px;
-    line-height:18px;
-    -webkit-line-clamp:3;
-  }
+.descripcion.descripcion-larga{font-size:24px}
+.fila-contacto{display:grid;grid-template-columns:minmax(300px,.72fr) minmax(430px,1.28fr);gap:12px;align-items:stretch;margin-top:2px}
+.contacto-card{
+  min-width:0;min-height:58px;padding:7px 14px;border-radius:13px;
+  display:grid;grid-template-columns:43px minmax(0,1fr);align-items:center;gap:11px;
+  border:2px solid transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 3px 8px rgba(0,0,0,.06)
 }
+.telefono-card{background:linear-gradient(90deg,#ddf7e7,#f3fcf6);border-color:#7dce9a;color:#0b6630}
+.direccion-card{background:linear-gradient(90deg,#dfefff,#f4f9ff);border-color:#88bee8;color:#0b568f}
+.icono-contacto{width:41px;height:41px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:25px;line-height:1;font-weight:900;box-shadow:0 3px 9px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.24)}
+.telefono-card .icono-contacto{background:var(--verde)}.direccion-card .icono-contacto{background:var(--azul)}
+.texto-contacto{min-width:0;display:flex;flex-direction:column;justify-content:center}
+.etiqueta-contacto{font-size:11px;line-height:12px;font-weight:1000;letter-spacing:1.12px}
+.dato-contacto{min-width:0;color:#0f1115;font-size:25px;line-height:28px;font-weight:1000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 #fff}
+.contacto-card.sin-dato{display:none}
+.linea-inferior{height:5px;background:#eceff2;overflow:hidden}.linea-inferior span{display:block;width:42%;height:100%;background:linear-gradient(90deg,var(--rojo),var(--naranja),var(--azul));animation:recorrido 7s linear infinite;opacity:.9}
+@keyframes recorrido{0%{transform:translateX(-110%)}100%{transform:translateX(350%)}}
 
-@media (max-width: 430px){
-  .bloque-contacto{
-    grid-template-columns:1fr 1fr;
-  }
+.banner.oculto{opacity:0;transform:translateX(-50%) translateY(245px);filter:blur(2px);pointer-events:none}
+.banner.cambio{animation:entrada-tv .42s cubic-bezier(.16,.84,.28,1)}
+@keyframes entrada-tv{0%{opacity:0;transform:translateX(calc(-50% + 44px)) scale(.985);filter:blur(2px)}100%{opacity:1;transform:translateX(-50%) scale(1);filter:blur(0)}}
 
-  .marca{
-    grid-column:1 / -1;
-    justify-self:center;
-  }
+@media(max-width:1100px){
+  .banner{left:10px;right:10px;bottom:max(12px,env(safe-area-inset-bottom));width:auto;max-width:none;min-width:0;transform:none;border-radius:17px;min-height:0}
+  .banner.oculto{transform:translateY(220px)}
+  @keyframes entrada-tv{0%{opacity:0;transform:translateX(28px) scale(.985);filter:blur(2px)}100%{opacity:1;transform:none;filter:blur(0)}}
+  .linea-superior{height:7px}
+  .contenido-banner{grid-template-columns:108px minmax(0,1fr);gap:13px;padding:12px 14px 13px}
+  .logo-box{width:108px;min-height:113px;border-radius:13px;padding:7px;box-shadow:0 0 0 2px var(--rojo),0 0 0 5px rgba(212,20,30,.10),0 5px 14px rgba(0,0,0,.15),inset 0 0 0 1px #dfe3e7}
+  .logo-box::before{height:6px}.logo-box::after{font-size:6px;line-height:8px;right:6px;bottom:5px;padding:1px 4px}.logo-box img{max-width:94px;max-height:98px}
+  .contenido-central{gap:5px}.encabezado-comercio{gap:8px}
+  .rubro{font-size:12px;line-height:15px;padding:4px 8px 3px}
+  .titulo,.titulo.nombre-medio,.titulo.nombre-largo{font-size:clamp(24px,5.7vw,40px);line-height:1.02;letter-spacing:-.55px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .marca-programa{padding:7px 9px;font-size:11px;border-radius:8px;gap:6px}.marca-punto{width:6px;height:6px;box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+  .descripcion,.descripcion.descripcion-larga{font-size:17px;line-height:20px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .fila-contacto{grid-template-columns:1fr 1.35fr;gap:7px}
+  .contacto-card{min-height:50px;padding:6px 8px;grid-template-columns:33px minmax(0,1fr);gap:7px;border-width:1px}
+  .icono-contacto{width:32px;height:32px;font-size:19px}.etiqueta-contacto{font-size:8px;line-height:9px;letter-spacing:.72px}.dato-contacto{font-size:15px;line-height:18px}
+  .linea-inferior{height:4px}
 }
-
-/* Nombre móvil dibujado como gráfico: evita fallos de renderizado de texto en Android. */
-.titulo-movil{
-  display:none;
+@media(max-width:620px){
+  .contenido-banner{grid-template-columns:86px minmax(0,1fr);gap:10px;padding:10px 11px 11px}
+  .logo-box{width:86px;min-height:94px}.logo-box img{max-width:74px;max-height:81px}.logo-box::after{display:none}
+  .marca-programa{position:absolute;right:12px;top:14px}
+  .encabezado-comercio{display:block;padding-right:78px}
+  .fila-contacto{grid-template-columns:1fr}.contacto-card{min-height:43px}.direccion-card{display:grid}
+  .contacto-card.sin-dato{display:none}.dato-contacto{font-size:14px}
 }
-
-@media (max-width:1100px){
-  .titulo-movil{
-    display:flex;
-    width:100%;
-    height:92px;
-    box-sizing:border-box;
-    margin:0 0 9px;
-    padding:0 4px 8px;
-    border-bottom:1px solid rgba(255,255,255,.14);
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-
-  #tituloMovilCanvas{
-    display:block;
-    max-width:100%;
-    height:92px;
-  }
-
-  /* En móvil se usa el canvas; el título HTML queda solo para PC/OBS. */
-  .bloque-nombre{
-    display:none;
-  }
-
-  .fila-superior{
-    grid-template-columns:82px minmax(0,1fr);
-    grid-template-areas:
-      "logo rubro"
-      "contacto contacto";
-  }
-}
-
-
-/* v3.8: detección real de teléfono.
-   No modifica PC/OBS. Evita depender del ancho de viewport de Chrome Android. */
-.titulo-movil-forzado{
-  display:none;
-}
-
-html.dispositivo-movil .titulo-movil,
-html.dispositivo-movil #tituloMovilCanvas{
-  display:none !important;
-}
-
-html.dispositivo-movil .titulo-movil-forzado{
-  display:block !important;
-  box-sizing:border-box;
-  width:100%;
-  margin:0 0 10px;
-  padding:4px 10px 10px;
-  border-bottom:1px solid rgba(255,255,255,.18);
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
-  font-family:Arial,sans-serif;
-  font-size:clamp(24px,7vw,38px);
-  line-height:1.08;
-  font-weight:900;
-  letter-spacing:.3px;
-  text-align:center;
-  text-transform:uppercase;
-  white-space:normal;
-  overflow-wrap:anywhere;
-  visibility:visible !important;
-  opacity:1 !important;
-  text-shadow:2px 2px 0 rgba(0,0,0,.55);
-}
-
-/* El título de PC permanece intacto. Solo se oculta en un teléfono real,
-   porque allí se usa el título independiente de arriba. */
-html.dispositivo-movil .bloque-nombre{
-  display:none !important;
-}
+@media(prefers-reduced-motion:reduce){.banner,.banner.cambio,.linea-inferior span{animation:none!important;transition:none!important}}

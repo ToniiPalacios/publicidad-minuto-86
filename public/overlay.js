@@ -10,27 +10,35 @@ function obtenerNombre(pub = {}) {
   return nombre || 'SIN NOMBRE';
 }
 
-function esTelefonoReal() {
-  const agente = navigator.userAgent || '';
-  return /Android|iPhone|iPad|iPod|Mobile/i.test(agente);
+function publicidadesActivas(lista) {
+  return lista.filter(pub => pub.activa !== false);
 }
 
-if (esTelefonoReal()) {
-  document.documentElement.classList.add('dispositivo-movil');
+function ajustarTexto(nombre, descripcion) {
+  const titulo = document.getElementById('titulo');
+  const detalle = document.getElementById('descripcion');
+
+  titulo.classList.remove('nombre-medio', 'nombre-largo');
+  detalle.classList.remove('descripcion-larga');
+
+  if (nombre.length > 30) titulo.classList.add('nombre-largo');
+  else if (nombre.length > 22) titulo.classList.add('nombre-medio');
+
+  if (descripcion.length > 76) detalle.classList.add('descripcion-larga');
 }
 
 function mostrarNombre(nombre) {
-  const texto = nombre || 'SIN NOMBRE';
-
-  const tituloPc = document.getElementById('titulo');
-  if (tituloPc) tituloPc.textContent = texto;
-
-  const tituloMovil = document.getElementById('tituloMovilForzado');
-  if (tituloMovil) tituloMovil.textContent = texto;
+  const titulo = document.getElementById('titulo');
+  if (titulo) titulo.textContent = nombre || 'SIN NOMBRE';
 }
 
-function publicidadesActivas(lista) {
-  return lista.filter(pub => pub.activa !== false);
+function actualizarContacto(idCard, idDato, valor) {
+  const card = document.getElementById(idCard);
+  const dato = document.getElementById(idDato);
+  const texto = valor === null || valor === undefined ? '' : String(valor).trim();
+
+  dato.textContent = texto;
+  card.classList.toggle('sin-dato', !texto);
 }
 
 async function cargarPublicidades() {
@@ -39,8 +47,8 @@ async function cargarPublicidades() {
     if (!res.ok) throw new Error('No se pudieron cargar las publicidades');
     const todas = await res.json();
     publicidades = publicidadesActivas(Array.isArray(todas) ? todas : []);
-  if (!publicidades.length) return mostrarVacio();
-  if (indice >= publicidades.length) indice = 0;
+    if (!publicidades.length) return mostrarVacio();
+    if (indice >= publicidades.length) indice = 0;
     mostrarActual();
     iniciarRotacion();
   } catch (error) {
@@ -51,21 +59,27 @@ async function cargarPublicidades() {
 
 function mostrarError() {
   if (timer) clearTimeout(timer);
-  mostrarNombre('PUBLICIDAD MINUTO 86');
+  const nombre = 'PUBLICIDAD MINUTO 86';
+  const descripcion = 'No se pudieron actualizar las publicidades';
+  mostrarNombre(nombre);
   document.getElementById('rubro').textContent = 'SIN CONEXIÓN';
-  document.getElementById('descripcion').textContent = 'No se pudieron actualizar las publicidades';
-  document.getElementById('telefono').textContent = '';
-  document.getElementById('direccion').textContent = '';
+  document.getElementById('descripcion').textContent = descripcion;
+  ajustarTexto(nombre, descripcion);
+  actualizarContacto('telefonoCard', 'telefono', '');
+  actualizarContacto('direccionCard', 'direccion', '');
   document.getElementById('logoBox').textContent = 'LOGO';
 }
 
 function mostrarVacio() {
   if (timer) clearTimeout(timer);
-  mostrarNombre('PUBLICIDAD MINUTO 86');
+  const nombre = 'PUBLICIDAD MINUTO 86';
+  const descripcion = 'No hay publicidades activas';
+  mostrarNombre(nombre);
   document.getElementById('rubro').textContent = 'ESPACIO PUBLICITARIO';
-  document.getElementById('descripcion').textContent = 'No hay publicidades activas';
-  document.getElementById('telefono').textContent = '';
-  document.getElementById('direccion').textContent = '';
+  document.getElementById('descripcion').textContent = descripcion;
+  ajustarTexto(nombre, descripcion);
+  actualizarContacto('telefonoCard', 'telefono', '');
+  actualizarContacto('direccionCard', 'direccion', '');
   document.getElementById('logoBox').textContent = 'LOGO';
 }
 
@@ -73,19 +87,30 @@ function mostrarActual() {
   if (!publicidades.length) return mostrarVacio();
   const pub = publicidades[indice];
   const banner = document.getElementById('banner');
+  const nombre = obtenerNombre(pub);
+  const descripcion = pub.descripcion ? String(pub.descripcion).trim() : '';
 
   banner.classList.remove('cambio');
   void banner.offsetWidth;
   banner.classList.add('cambio');
 
-  mostrarNombre(obtenerNombre(pub));
+  mostrarNombre(nombre);
   document.getElementById('rubro').textContent = pub.rubro || 'PUBLICIDAD';
-  document.getElementById('descripcion').textContent = pub.descripcion || '';
-  document.getElementById('telefono').textContent = pub.telefono ? 'TEL: ' + pub.telefono : '';
-  document.getElementById('direccion').textContent = pub.direccion ? 'DIR: ' + pub.direccion : '';
+  document.getElementById('descripcion').textContent = descripcion;
+  actualizarContacto('telefonoCard', 'telefono', pub.telefono);
+  actualizarContacto('direccionCard', 'direccion', pub.direccion);
+  ajustarTexto(nombre, descripcion);
 
   const logoBox = document.getElementById('logoBox');
-  logoBox.innerHTML = pub.logo ? `<img src="${pub.logo}?v=${Date.now()}" alt="Logo">` : 'LOGO';
+  if (pub.logo) {
+    const img = document.createElement('img');
+    img.src = `${pub.logo}${pub.logo.includes('?') ? '&' : '?'}v=${Date.now()}`;
+    img.alt = `Logo de ${nombre}`;
+    img.onerror = () => { logoBox.textContent = 'LOGO'; };
+    logoBox.replaceChildren(img);
+  } else {
+    logoBox.textContent = 'LOGO';
+  }
 }
 
 function iniciarRotacion() {

@@ -4,37 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Overlay Publicidad Minuto 86</title>
-  <link rel="stylesheet" href="style.css?v=3.8-mobile-real">
+  <link rel="stylesheet" href="style.css?v=6.0-keygram-final">
 </head>
 <body>
-  <div id="banner" class="banner">
-    <!-- Título exclusivo para teléfonos reales. Se activa por JavaScript, no por ancho de pantalla. -->
-    <div id="tituloMovilForzado" class="titulo-movil-forzado" aria-live="polite"></div>
+  <div id="banner" class="banner" role="region" aria-label="Publicidad">
+    <div class="linea-superior" aria-hidden="true">
+      <span class="linea-roja"></span><span class="linea-naranja"></span>
+      <span class="linea-azul"></span><span class="linea-verde"></span>
+    </div>
 
-    <div class="fila-superior">
+    <div class="contenido-banner">
       <div id="logoBox" class="logo-box">LOGO</div>
 
-      <div class="bloque-rubro">
-        <div id="rubro" class="rubro">ESPACIO PUBLICITARIO</div>
-      </div>
+      <div class="contenido-central">
+        <div class="encabezado-comercio">
+          <div class="bloque-identidad">
+            <div id="rubro" class="rubro">ESPACIO PUBLICITARIO</div>
+            <div id="titulo" class="titulo">PUBLICIDAD MINUTO 86</div>
+          </div>
 
-      <div class="bloque-nombre">
-        <div id="titulo" class="titulo">PUBLICIDAD MINUTO 86</div>
-      </div>
+          <div class="marca-programa" aria-label="Minuto 86">
+            <span class="marca-punto" aria-hidden="true"></span>
+            <span>MINUTO 86</span>
+          </div>
+        </div>
 
-      <div class="bloque-contacto">
-        <div id="telefono" class="dato"></div>
-        <div id="direccion" class="dato"></div>
-        <div class="marca">MINUTO 86</div>
+        <div id="descripcion" class="descripcion">Cargando publicidades...</div>
+
+        <div class="fila-contacto">
+          <div id="telefonoCard" class="contacto-card telefono-card">
+            <div class="icono-contacto" aria-hidden="true">☎</div>
+            <div class="texto-contacto">
+              <span class="etiqueta-contacto">CONTACTO</span>
+              <span id="telefono" class="dato-contacto"></span>
+            </div>
+          </div>
+
+          <div id="direccionCard" class="contacto-card direccion-card">
+            <div class="icono-contacto" aria-hidden="true">⌖</div>
+            <div class="texto-contacto">
+              <span class="etiqueta-contacto">DÓNDE ENCONTRARNOS</span>
+              <span id="direccion" class="dato-contacto"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="fila-descripcion">
-      <div id="descripcion" class="descripcion">Cargando publicidades...</div>
-    </div>
+    <div class="linea-inferior" aria-hidden="true"><span></span></div>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="overlay.js?v=3.8-mobile-real"></script>
+  <script src="overlay.js?v=6.0-keygram-final"></script>
 </body>
 </html>
