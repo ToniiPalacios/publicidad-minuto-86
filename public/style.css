@@ -9,69 +9,69 @@ body{margin:0;background:transparent;color:var(--tinta);font-family:Arial,Helvet
 
 .banner{
   position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
-  width:calc(100vw - 96px);max-width:1824px;min-width:940px;
-  min-height:204px;background:rgba(255,255,255,.995);
-  border:2px solid rgba(17,19,24,.24);border-radius:22px;overflow:hidden;
+  width:calc(100vw - 230px);max-width:1640px;min-width:900px;
+  min-height:0;background:rgba(255,255,255,.995);
+  border:2px solid rgba(17,19,24,.24);border-radius:18px;overflow:hidden;
   box-shadow:0 18px 46px rgba(0,0,0,.42),0 5px 14px rgba(0,0,0,.22),inset 0 1px 0 #fff;
   transition:opacity .32s ease,transform .36s cubic-bezier(.2,.8,.2,1),filter .32s ease;
 }
-.linea-superior{display:grid;grid-template-columns:56% 18% 15% 11%;height:9px;width:100%}
+.linea-superior{display:grid;grid-template-columns:56% 18% 15% 11%;height:6px;width:100%}
 .linea-superior span{display:block}.linea-roja{background:var(--rojo)}.linea-naranja{background:var(--naranja)}.linea-azul{background:var(--azul)}.linea-verde{background:var(--verde)}
 
-.contenido-banner{display:grid;grid-template-columns:178px minmax(0,1fr);gap:22px;align-items:stretch;padding:14px 22px 15px}
+.contenido-banner{display:grid;grid-template-columns:138px minmax(0,1fr);gap:12px;align-items:stretch;padding:5px 12px 6px}
 .logo-box{
-  position:relative;width:178px;min-height:164px;padding:12px;background:linear-gradient(145deg,#fff,#f7f8fa);
-  color:#3e454c;border:3px solid #fff;border-radius:18px;display:flex;align-items:center;justify-content:center;
+  position:relative;width:138px;min-height:128px;padding:6px;background:linear-gradient(145deg,#fff,#f7f8fa);
+  color:#3e454c;border:3px solid #fff;border-radius:15px;display:flex;align-items:center;justify-content:center;
   overflow:hidden;font-size:17px;font-weight:900;text-align:center;
   box-shadow:0 0 0 3px var(--rojo),0 0 0 7px rgba(212,20,30,.10),0 8px 20px rgba(0,0,0,.18),inset 0 0 0 1px #dfe3e7;
 }
-.logo-box::before{content:"";position:absolute;left:0;top:0;right:0;height:8px;background:linear-gradient(90deg,var(--rojo) 0 62%,var(--naranja) 62% 100%)}
+.logo-box::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:linear-gradient(90deg,var(--rojo) 0 62%,var(--naranja) 62% 100%)}
 .logo-box::after{content:"ANUNCIANTE";position:absolute;right:9px;bottom:7px;padding:2px 6px;border-radius:999px;background:rgba(17,19,24,.78);color:#fff;font-size:8px;line-height:11px;font-weight:900;letter-spacing:.9px}
-.logo-box img{display:block;max-width:152px;max-height:139px;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(0,0,0,.14))}
+.logo-box img{display:block;max-width:120px;max-height:108px;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(0,0,0,.14))}
 
-.contenido-central{min-width:0;display:grid;grid-template-rows:auto auto 1fr;align-content:center;gap:5px}
-.encabezado-comercio{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}
+.contenido-central{min-width:0;display:grid;grid-template-rows:auto auto 1fr;align-content:center;gap:2px}
+.encabezado-comercio{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
 .bloque-identidad{min-width:0}
 .rubro{
-  display:inline-flex;max-width:100%;padding:5px 14px 4px;border-radius:999px;
+  display:inline-flex;max-width:100%;padding:1px 11px;border-radius:999px;
   background:linear-gradient(135deg,var(--rojo),var(--rojo-oscuro));border:1px solid rgba(112,0,8,.55);color:#fff;
-  font-size:18px;line-height:22px;font-weight:1000;letter-spacing:.65px;text-transform:uppercase;
+  font-size:18px;line-height:20px;font-weight:1000;letter-spacing:.65px;text-transform:uppercase;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   box-shadow:0 4px 10px rgba(190,16,25,.20),inset 0 1px 0 rgba(255,255,255,.22)
 }
 .titulo{
-  margin-top:3px;color:#0d0f13;font-size:58px;line-height:60px;font-weight:1000;
+  margin-top:0;color:#0d0f13;font-size:58px;line-height:50px;font-weight:1000;
   letter-spacing:-1.45px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   -webkit-text-stroke:.3px rgba(0,0,0,.28);text-shadow:0 2px 0 rgba(255,255,255,.95),0 3px 7px rgba(0,0,0,.10)
 }
-.titulo.nombre-medio{font-size:50px;line-height:54px}.titulo.nombre-largo{font-size:42px;line-height:47px;letter-spacing:-.7px}
+.titulo.nombre-medio{font-size:50px;line-height:46px}.titulo.nombre-largo{font-size:42px;line-height:40px;letter-spacing:-.7px}
 .marca-programa{
-  display:flex;align-items:center;gap:9px;margin-top:3px;padding:10px 15px;border-radius:11px;
+  display:flex;align-items:center;gap:9px;margin-top:0;padding:5px 11px;border-radius:10px;
   background:linear-gradient(135deg,#e21a25,var(--rojo-oscuro));color:#fff;
   border:1px solid rgba(110,0,8,.62);font-size:18px;font-weight:1000;letter-spacing:.6px;white-space:nowrap;
   box-shadow:0 6px 16px rgba(201,20,29,.30),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.12)
 }
 .marca-punto{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.20),0 0 10px rgba(255,255,255,.7)}
 .descripcion{
-  min-width:0;color:#30363d;font-size:27px;line-height:31px;font-weight:900;
-  padding:1px 0 3px;border-bottom:1px solid #e2e6ea;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  min-width:0;color:#30363d;font-size:27px;line-height:24px;font-weight:900;
+  padding:0;border-bottom:1px solid #e2e6ea;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
 }
 .descripcion.descripcion-larga{font-size:24px}
-.fila-contacto{display:grid;grid-template-columns:minmax(300px,.72fr) minmax(430px,1.28fr);gap:12px;align-items:stretch;margin-top:2px}
+.fila-contacto{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(390px,1.28fr);gap:8px;align-items:stretch;margin-top:0}
 .contacto-card{
-  min-width:0;min-height:58px;padding:7px 14px;border-radius:13px;
-  display:grid;grid-template-columns:43px minmax(0,1fr);align-items:center;gap:11px;
+  min-width:0;min-height:40px;padding:2px 10px;border-radius:11px;
+  display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:8px;
   border:2px solid transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 3px 8px rgba(0,0,0,.06)
 }
 .telefono-card{background:linear-gradient(90deg,#ddf7e7,#f3fcf6);border-color:#7dce9a;color:#0b6630}
 .direccion-card{background:linear-gradient(90deg,#dfefff,#f4f9ff);border-color:#88bee8;color:#0b568f}
-.icono-contacto{width:41px;height:41px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:25px;line-height:1;font-weight:900;box-shadow:0 3px 9px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.24)}
+.icono-contacto{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:25px;line-height:1;font-weight:900;box-shadow:0 3px 9px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.24)}
 .telefono-card .icono-contacto{background:var(--verde)}.direccion-card .icono-contacto{background:var(--azul)}
 .texto-contacto{min-width:0;display:flex;flex-direction:column;justify-content:center}
 .etiqueta-contacto{font-size:11px;line-height:12px;font-weight:1000;letter-spacing:1.12px}
-.dato-contacto{min-width:0;color:#0f1115;font-size:25px;line-height:28px;font-weight:1000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 #fff}
+.dato-contacto{min-width:0;color:#0f1115;font-size:25px;line-height:25px;font-weight:1000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 #fff}
 .contacto-card.sin-dato{display:none}
-.linea-inferior{height:5px;background:#eceff2;overflow:hidden}.linea-inferior span{display:block;width:42%;height:100%;background:linear-gradient(90deg,var(--rojo),var(--naranja),var(--azul));animation:recorrido 7s linear infinite;opacity:.9}
+.linea-inferior{height:2px;background:#eceff2;overflow:hidden}.linea-inferior span{display:block;width:42%;height:100%;background:linear-gradient(90deg,var(--rojo),var(--naranja),var(--azul));animation:recorrido 7s linear infinite;opacity:.9}
 @keyframes recorrido{0%{transform:translateX(-110%)}100%{transform:translateX(350%)}}
 
 .banner.oculto{opacity:0;transform:translateX(-50%) translateY(245px);filter:blur(2px);pointer-events:none}
